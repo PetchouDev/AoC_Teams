@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  aoc-teams-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aoc-teams-backend
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./data.json:/usr/src/app/data.json
+      - ./config.json:/usr/src/app/config.json:ro
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped

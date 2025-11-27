@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "AoC Teams Leaderboard",
+  "version": "0.1.0",
+  "description": "Allows teams integration on private leaderboards on Advent of Code.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://adventofcode.com/*",
+    "<all_urls>"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    },
+    "default_title": "AoC Teams",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://adventofcode.com/*/leaderboard/private/view/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AoC Teams Backends</title>
+  <style>
+    :root {
+      --bg: #0c1a24;
+      --panel: #122637;
+      --accent: #41b883;
+      --muted: #9fb3c8;
+      --danger: #ef5350;
+      --info: #5c8df6;
+    }
+    html, body {
+      width: 380px;
+      min-height: 420px;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 16px;
+      background: radial-gradient(circle at 20% 20%, #143149, #0c1a24 55%);
+      color: #e6edf3;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid #1f3a4f;
+      border-radius: 10px;
+      padding: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: 0.3px;
+    }
+    h2 {
+      margin: 12px 0 6px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+    #status {
+      min-height: 18px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .backend {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 12px;
+      margin: 6px 0;
+      border: 1px solid #1f3a4f;
+      border-radius: 8px;
+      background: #0f202f;
+    }
+    .backend strong {
+      display: block;
+      font-size: 14px;
+    }
+    .backend span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    button.delete, button.view {
+      border: 1px solid transparent;
+      background: transparent;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      padding: 6px 10px;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    button.delete {
+      border-color: rgba(239, 83, 80, 0.5);
+      color: var(--danger);
+    }
+    button.delete:hover {
+      background: rgba(239, 83, 80, 0.1);
+    }
+    button.view {
+      border-color: rgba(92, 141, 246, 0.5);
+      color: var(--info);
+    }
+    button.view:hover {
+      background: rgba(92, 141, 246, 0.1);
+    }
+    form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    input[type="url"] {
+      padding: 10px;
+      border: 1px solid #1f3a4f;
+      border-radius: 8px;
+      font-size: 13px;
+      background: #0f202f;
+      color: #e6edf3;
+    }
+    input[type="url"]::placeholder {
+      color: #6e7e92;
+    }
+    button[type="submit"] {
+      padding: 10px 14px;
+      font-size: 13px;
+      border-radius: 8px;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #0c1a24;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.1s ease;
+    }
+    button[type="submit"]:hover {
+      transform: translateY(-1px);
+    }
+    .help {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>AoC Teams Backends</h1>
+    <div id="status"></div>
+
+    <section>
+      <h2>Registered</h2>
+      <div id="backend-list"></div>
+    </section>
+
+    <section>
+      <h2>Add a backend</h2>
+      <form id="add-form">
+        <label for="backend-url" class="help">Backend URL (e.g. http://example.com/leaderboard_slug/)</label>
+        <input id="backend-url" type="url" required placeholder="http://example.com/leaderboard_slug/">
+        <button type="submit">Add</button>
+      </form>
+      <p class="help">The backend must expose /config and return the list of leaderboards (year + id).</p>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

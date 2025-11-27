@@ -1,0 +1,10 @@
+{
+    "Leaderboard name" : {
+        "year": 2025,
+        "id": 20251225,
+        "teams": {
+            "Team 1": "#00ccff",
+            "Team 2": "#33FF57"
+        }
+    }
+}
