@@ -11,8 +11,10 @@ Chrome extension + Node.js backend to add team rankings on Advent of Code privat
 **0.** Dependencies: 
   - Install `Docker` or any container runtime you prefer (but this readme assumes Docker).
   - Install `Nginx` or any reverse proxy of your choice to expose the backend on the internet.
-  - Clone the repo `git clone https://github.com/PetchouDev/AoC_Teams.git`
+  - Clone the repo `git clone https://github.com/PetchouDev/AoC_Teams.git` and navigate to the project folder `cd AoC_Teams`.
+
 **1.** Go to the backend directory: `cd backend`
+
 **2.** Change the `config.json` file to define your leaderboards and teams.
 Here is an example:
 ```json
@@ -27,11 +29,13 @@ Here is an example:
     }
 }
 ```
+
 **3.** Build adn run the backend as a detached container:
 ```bash
 docker compose up -d
 ```
 At this point, the backend should be running on `http://localhost:3001` inside your machine.
+
 **4.** Configure your reverse proxy (e.g. Nginx) to forward requests from the external URL to the backend container.
 ```bash
 # Debian/Ubuntu example:
@@ -43,6 +47,7 @@ systemctl reload nginx
 cp aos_team.conf /etc/nginx/conf.d/aos_team.conf
 systemctl reload nginx
 ```
+
 **5.** Enable HTTPS using Certbot (optional but recommended):
   - Install Certbot: 
   ```bash
